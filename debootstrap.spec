@@ -2,7 +2,7 @@
 # - optional package with dev files / links to dev
 # - still problems on amd64 :/
 Summary:	Bootstrap a basic Debian system
-Summary(pl):	Zainstaluj debiana
+Summary(pl):	Zainstaluj Debiana
 Name:		debootstrap
 Version:	0.2.45
 Release:	0.1
@@ -10,6 +10,7 @@ License:	Freeware
 Group:		Applications/File
 Source0:	http://ftp.debian.org/debian/pool/main/d/%{name}/%{name}_%{version}.tar.gz
 # Source0-md5:	faac4b6cb7f278f64a68e4d45a26ae53
+BuildRequires:	sed >= 4.0
 Requires:	binutils
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -22,7 +23,7 @@ them into a directory which can eventually be chrooted into.
 
 %description -l pl
 Debootstrap jest wykorzystywany do tworzenia podstawowego systemu
-debiana od podstaw, bez potrzeby dostêpno¶ci dpkg lub apt. ¦ci±ga
+Debiana od podstaw, bez potrzeby dostêpno¶ci dpkg lub apt. ¦ci±ga
 pliki .deb z serwera i ostro¿nie rozpakowuje je do katalogu, dok±d
 mo¿esz siê nastêpnie chrootowaæ.
 
@@ -53,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_sbindir}/%{name}
 %attr(755,root,root) %{_libdir}/%{name}/pkgdetails
 %{_mandir}/man?/%{name}.*
-%dir %{_libdir}/%{name}/
+%dir %{_libdir}/%{name}
 %{_libdir}/%{name}/scripts
 %{_libdir}/%{name}/functions
 %{_libdir}/%{name}/arch
