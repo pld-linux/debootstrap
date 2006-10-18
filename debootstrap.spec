@@ -1,15 +1,16 @@
 # TODO:
 # - optional package with dev files / links to dev
-# - still problems on amd64 :/
+# - still problems on amd64:/
 Summary:	Bootstrap a basic Debian system
 Summary(pl):	Zainstaluj Debiana
 Name:		debootstrap
-Version:	0.2.45
+Version:	0.3.3
 Release:	0.1
 License:	Freeware
 Group:		Applications/File
-Source0:	http://ftp.debian.org/debian/pool/main/d/%{name}/%{name}_%{version}.tar.gz
-# Source0-md5:	faac4b6cb7f278f64a68e4d45a26ae53
+Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
+# Source0-md5:	22fcb8cc4218e582ad701b44e2549dce
+Source1:	devices.tar.gz
 BuildRequires:	sed >= 4.0
 Requires:	binutils
 Requires:	wget
@@ -28,7 +29,7 @@ pliki .deb z serwera i ostro¿nie rozpakowuje je do katalogu, dok±d
 mo¿esz siê nastêpnie chrootowaæ.
 
 %prep
-%setup -q
+%setup -q -n %{version}
 
 %build
 %{__make} pkgdetails
@@ -40,9 +41,10 @@ install -D %{name} $RPM_BUILD_ROOT%{_sbindir}/%{name}
 install -D %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/%{name}.8
 
 install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
-install slink potato woody sarge sid woody.buildd sarge.buildd sid.buildd \
+install breezy hoary warty potato woody sarge sid woody.buildd sarge.buildd hoary.buildd warty.buildd sarge.fakechroot \
 	$RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
 install pkgdetails functions $RPM_BUILD_ROOT%{_libdir}/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/%{name}/
 echo %{_arch} >$RPM_BUILD_ROOT%{_libdir}/%{name}/arch
 
 %clean
@@ -58,3 +60,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/scripts
 %{_libdir}/%{name}/functions
 %{_libdir}/%{name}/arch
+%{_libdir}/%{name}/devices.tar.gz
