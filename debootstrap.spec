@@ -5,12 +5,15 @@ Summary:	Bootstrap a basic Debian system
 Summary(pl):	Zainstaluj Debiana
 Name:		debootstrap
 Version:	0.3.3
-Release:	0.1
+Release:	0.2
 License:	Freeware
 Group:		Applications/File
 Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
 # Source0-md5:	22fcb8cc4218e582ad701b44e2549dce
 Source1:	devices.tar.gz
+Source2:	%{name}-etch
+Source3:	%{name}-dapper
+Source4:	%{name}-edgy
 BuildRequires:	sed >= 4.0
 Requires:	binutils
 Requires:	wget
@@ -45,6 +48,9 @@ install breezy hoary warty potato woody sarge sid woody.buildd sarge.buildd hoar
 	$RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
 install pkgdetails functions $RPM_BUILD_ROOT%{_libdir}/%{name}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/%{name}/
+install %{SOURCE2} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/etch
+install %{SOURCE3} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/dapper
+install %{SOURCE4} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/edgy
 echo %{_arch} >$RPM_BUILD_ROOT%{_libdir}/%{name}/arch
 
 %clean
