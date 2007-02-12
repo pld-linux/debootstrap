@@ -2,7 +2,7 @@
 # - optional package with dev files / links to dev
 # - still problems on amd64:/
 Summary:	Bootstrap a basic Debian system
-Summary(pl.UTF-8):   Zainstaluj Debiana
+Summary(pl.UTF-8):	Zainstaluj Debiana
 Name:		debootstrap
 Version:	0.3.3
 Release:	0.2
