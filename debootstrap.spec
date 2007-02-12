@@ -2,7 +2,7 @@
 # - optional package with dev files / links to dev
 # - still problems on amd64:/
 Summary:	Bootstrap a basic Debian system
-Summary(pl):	Zainstaluj Debiana
+Summary(pl.UTF-8):   Zainstaluj Debiana
 Name:		debootstrap
 Version:	0.3.3
 Release:	0.2
@@ -25,11 +25,11 @@ without requiring the availability of dpkg or apt. It does this by
 downloading .deb files from a mirror site, and carefully unpacking
 them into a directory which can eventually be chrooted into.
 
-%description -l pl
+%description -l pl.UTF-8
 Debootstrap jest wykorzystywany do tworzenia podstawowego systemu
-Debiana od podstaw, bez potrzeby dostêpno¶ci dpkg lub apt. ¦ci±ga
-pliki .deb z serwera i ostro¿nie rozpakowuje je do katalogu, dok±d
-mo¿esz siê nastêpnie chrootowaæ.
+Debiana od podstaw, bez potrzeby dostÄ™pnoÅ›ci dpkg lub apt. ÅšciÄ…ga
+pliki .deb z serwera i ostroÅ¼nie rozpakowuje je do katalogu, dokÄ…d
+moÅ¼esz siÄ™ nastÄ™pnie chrootowaÄ‡.
 
 %prep
 %setup -q -n %{version}
