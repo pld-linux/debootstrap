@@ -4,16 +4,21 @@
 Summary:	Bootstrap a basic Debian system
 Summary(pl.UTF-8):	Zainstaluj Debiana
 Name:		debootstrap
-Version:	0.3.3
-Release:	0.2
+Version:	0.3.3.3
+Release:	0.3
 License:	Freeware
 Group:		Applications/File
 Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
-# Source0-md5:	22fcb8cc4218e582ad701b44e2549dce
+# Source0-md5:	d7bbf38b336b6491e0ae6db847b4cfd0
 Source1:	devices.tar.gz
 Source2:	%{name}-etch
 Source3:	%{name}-dapper
 Source4:	%{name}-edgy
+Source5:	%{name}-feisty
+Source6:	%{name}-feisty.fakechroot
+Source7:	%{name}-gutsy
+Source8:	%{name}-gutsy.fakechroot
+BuildRequires:	dpkg
 BuildRequires:	sed >= 4.0
 Requires:	binutils
 Requires:	wget
@@ -32,7 +37,7 @@ pliki .deb z serwera i ostrożnie rozpakowuje je do katalogu, dokąd
 możesz się następnie chrootować.
 
 %prep
-%setup -q -n %{version}
+%setup -q
 
 %build
 %{__make} pkgdetails
@@ -51,6 +56,10 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/%{name}/
 install %{SOURCE2} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/etch
 install %{SOURCE3} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/dapper
 install %{SOURCE4} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/edgy
+install %{SOURCE5} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/feisty
+install %{SOURCE6} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/feisty.fakechroot
+install %{SOURCE7} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/gutsy
+install %{SOURCE8} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/gutsy.fakechroot
 echo %{_arch} >$RPM_BUILD_ROOT%{_libdir}/%{name}/arch
 
 %clean
