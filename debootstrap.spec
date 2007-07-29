@@ -4,20 +4,13 @@
 Summary:	Bootstrap a basic Debian system
 Summary(pl.UTF-8):	Zainstaluj Debiana
 Name:		debootstrap
-Version:	0.3.3.3
+Version:	1.0.1
 Release:	0.3
 License:	Freeware
 Group:		Applications/File
-Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
-# Source0-md5:	d7bbf38b336b6491e0ae6db847b4cfd0
+Source0:	http://archive.ubuntulinux.org/ubuntu/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
+# Source0-md5:	afa00d6362c8246560797cb54c502908
 Source1:	devices.tar.gz
-Source2:	%{name}-etch
-Source3:	%{name}-dapper
-Source4:	%{name}-edgy
-Source5:	%{name}-feisty
-Source6:	%{name}-feisty.fakechroot
-Source7:	%{name}-gutsy
-Source8:	%{name}-gutsy.fakechroot
 BuildRequires:	dpkg
 BuildRequires:	sed >= 4.0
 Requires:	binutils
@@ -37,7 +30,7 @@ pliki .deb z serwera i ostrożnie rozpakowuje je do katalogu, dokąd
 możesz się następnie chrootować.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
 %{__make} pkgdetails
@@ -49,17 +42,10 @@ install -D %{name} $RPM_BUILD_ROOT%{_sbindir}/%{name}
 install -D %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/%{name}.8
 
 install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
-install breezy hoary warty potato woody sarge sid woody.buildd sarge.buildd hoary.buildd warty.buildd sarge.fakechroot \
-	$RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
+install scripts/debian/* $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
+install scripts/ubuntu/* $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
 install pkgdetails functions $RPM_BUILD_ROOT%{_libdir}/%{name}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/%{name}/
-install %{SOURCE2} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/etch
-install %{SOURCE3} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/dapper
-install %{SOURCE4} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/edgy
-install %{SOURCE5} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/feisty
-install %{SOURCE6} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/feisty.fakechroot
-install %{SOURCE7} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/gutsy
-install %{SOURCE8} $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/gutsy.fakechroot
 echo %{_arch} >$RPM_BUILD_ROOT%{_libdir}/%{name}/arch
 
 %clean
