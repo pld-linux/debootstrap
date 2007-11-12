@@ -4,14 +4,13 @@
 Summary:	Bootstrap a basic Debian system
 Summary(pl.UTF-8):	Zainstaluj Debiana
 Name:		debootstrap
-Version:	1.0.1
-Release:	0.3
+Version:	1.0.6
+Release:	1
 License:	Freeware
 Group:		Applications/File
 Source0:	http://archive.ubuntulinux.org/ubuntu/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
-# Source0-md5:	afa00d6362c8246560797cb54c502908
+# Source0-md5:	e0baaef6140b6a1c87d2181ecbfb2b42
 Source1:	devices.tar.gz
-BuildRequires:	dpkg
 BuildRequires:	sed >= 4.0
 Requires:	binutils
 Requires:	wget
@@ -44,6 +43,10 @@ install -D %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/%{name}.8
 install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
 install scripts/debian/* $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
 install scripts/ubuntu/* $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
+ln -sf sid $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/etch
+ln -sf sid $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/lenny
+ln -sf gutsy $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/hardy
+
 install pkgdetails functions $RPM_BUILD_ROOT%{_libdir}/%{name}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/%{name}/
 echo %{_arch} >$RPM_BUILD_ROOT%{_libdir}/%{name}/arch
