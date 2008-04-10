@@ -1,19 +1,19 @@
 # TODO:
 # - optional package with dev files / links to dev
-# - still problems on amd64:/
 Summary:	Bootstrap a basic Debian system
 Summary(pl.UTF-8):	Zainstaluj Debiana
 Name:		debootstrap
-Version:	1.0.6
+Version:	1.0.8
 Release:	1
 License:	Freeware
 Group:		Applications/File
-Source0:	http://archive.ubuntulinux.org/ubuntu/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
-# Source0-md5:	e0baaef6140b6a1c87d2181ecbfb2b42
+Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
+# Source0-md5:	267120a2e8b7e829b292376a9eac4d96
 Source1:	devices.tar.gz
 BuildRequires:	sed >= 4.0
 Requires:	binutils
 Requires:	wget
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,38 +30,36 @@ możesz się następnie chrootować.
 
 %prep
 %setup -q -n %{name}
-
-%build
-%{__make} pkgdetails
-sed -i -e "s@/usr/lib/@%{_libdir}/@g" %{name}
+sed -i -e "s|@VERSION@|%{version}|g" %{name}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -D %{name} $RPM_BUILD_ROOT%{_sbindir}/%{name}
-install -D %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/%{name}.8
 
-install -d $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
-install scripts/debian/* $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
-install scripts/ubuntu/* $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts
-ln -sf sid $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/etch
-ln -sf sid $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/lenny
-ln -sf gutsy $RPM_BUILD_ROOT%{_libdir}/%{name}/scripts/hardy
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8,%{_datadir}/%{name}/scripts}
 
-install pkgdetails functions $RPM_BUILD_ROOT%{_libdir}/%{name}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_libdir}/%{name}/
-echo %{_arch} >$RPM_BUILD_ROOT%{_libdir}/%{name}/arch
+install %{name} $RPM_BUILD_ROOT%{_sbindir}/%{name}
+install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/%{name}.8
+
+install scripts/debian/* $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
+install scripts/ubuntu/* $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
+
+ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/etch
+ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/etch-m68k
+ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/lenny
+ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/hardy
+
+install functions $RPM_BUILD_ROOT%{_datadir}/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc debian/README.Debian debian/copyright
+%doc debian/README.Debian debian/copyright debian/changelog
 %attr(755,root,root) %{_sbindir}/%{name}
-%attr(755,root,root) %{_libdir}/%{name}/pkgdetails
 %{_mandir}/man?/%{name}.*
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/scripts
-%{_libdir}/%{name}/functions
-%{_libdir}/%{name}/arch
-%{_libdir}/%{name}/devices.tar.gz
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/scripts
+%{_datadir}/%{name}/functions
+%{_datadir}/%{name}/devices.tar.gz
