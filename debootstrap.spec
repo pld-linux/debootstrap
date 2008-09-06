@@ -3,12 +3,12 @@
 Summary:	Bootstrap a basic Debian system
 Summary(pl.UTF-8):	Zainstaluj Debiana
 Name:		debootstrap
-Version:	1.0.8
+Version:	1.0.10
 Release:	1
 License:	Freeware
 Group:		Applications/File
 Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
-# Source0-md5:	267120a2e8b7e829b292376a9eac4d96
+# Source0-md5:	7e69840dd670af938fc13eea9e53e49f
 Source1:	devices.tar.gz
 BuildRequires:	sed >= 4.0
 Requires:	binutils
