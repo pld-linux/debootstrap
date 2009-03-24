@@ -1,7 +1,7 @@
 # TODO:
 # - optional package with dev files / links to dev
 Summary:	Bootstrap a basic Debian system
-Summary(pl.UTF-8):	Zainstaluj Debiana
+Summary(pl.UTF-8):	Instalator podstawowego systemu opartego o pakiety deb
 Name:		debootstrap
 Version:	1.0.12
 Release:	1
