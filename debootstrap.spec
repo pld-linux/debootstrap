@@ -46,7 +46,10 @@ install scripts/ubuntu/* $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
 ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/etch
 ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/etch-m68k
 ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/lenny
+ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/squeezy
 ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/hardy
+ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/intrepid
+ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/jaunty
 
 install functions $RPM_BUILD_ROOT%{_datadir}/%{name}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/%{name}
@@ -58,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc debian/README.Debian debian/copyright debian/changelog
 %attr(755,root,root) %{_sbindir}/%{name}
-%{_mandir}/man?/%{name}.*
+%{_mandir}/man8/%{name}.8*
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/scripts
 %{_datadir}/%{name}/functions
