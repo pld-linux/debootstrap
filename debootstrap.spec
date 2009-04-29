@@ -50,6 +50,7 @@ ln -sf sid $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/squeezy
 ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/hardy
 ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/intrepid
 ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/jaunty
+ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/karmic
 
 install functions $RPM_BUILD_ROOT%{_datadir}/%{name}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/%{name}
