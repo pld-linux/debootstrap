@@ -10,6 +10,7 @@ Group:		Applications/File
 Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
 # Source0-md5:	d3fbb612b381841a616a804c946a344a
 Source1:	devices.tar.gz
+# Source1-md5:	8c12b8d845b32080c6c769afb3376ada
 BuildRequires:	sed >= 4.0
 Requires:	binutils
 Requires:	wget
