@@ -3,12 +3,12 @@
 Summary:	Bootstrap a basic Debian system
 Summary(pl.UTF-8):	Instalator podstawowego systemu opartego o pakiety deb
 Name:		debootstrap
-Version:	1.0.42
+Version:	1.0.53
 Release:	1
-License:	Freeware
+License:	MIT-like
 Group:		Applications/File
 Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
-# Source0-md5:	ebf8abefa0e30f6c251f16affdec1079
+# Source0-md5:	cd95777a48a65e5cc414e1c1af875a3a
 Source1:	devices.tar.gz
 # Source1-md5:	8c12b8d845b32080c6c769afb3376ada
 BuildRequires:	sed >= 4.0
@@ -42,9 +42,6 @@ install %{name} $RPM_BUILD_ROOT%{_sbindir}/%{name}
 install %{name}.8 $RPM_BUILD_ROOT%{_mandir}/man8/%{name}.8
 
 cp -a scripts $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts
-
-# not yet included in debootstrap package, but it should work
-ln -sf gutsy $RPM_BUILD_ROOT%{_datadir}/%{name}/scripts/maverick
 
 install functions $RPM_BUILD_ROOT%{_datadir}/%{name}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_datadir}/%{name}
