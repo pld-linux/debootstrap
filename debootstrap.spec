@@ -3,12 +3,12 @@
 Summary:	Bootstrap a basic Debian system
 Summary(pl.UTF-8):	Instalator podstawowego systemu opartego o pakiety deb
 Name:		debootstrap
-Version:	1.0.53
+Version:	1.0.55
 Release:	1
 License:	MIT-like
 Group:		Applications/File
 Source0:	http://ftp.debian.org/debian/pool/main/d/debootstrap/%{name}_%{version}.tar.gz
-# Source0-md5:	cd95777a48a65e5cc414e1c1af875a3a
+# Source0-md5:	9b9b4b07545ff5694963b06024ec13c6
 Source1:	devices.tar.gz
 # Source1-md5:	8c12b8d845b32080c6c769afb3376ada
 BuildRequires:	sed >= 4.0
